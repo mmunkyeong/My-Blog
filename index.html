@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>문경 블로그</title>
+  <title>장희성 블로그</title>
 
   <!-- 제이쿼리 -->
   <!-- js 쉽게 만들어 줌 -->
@@ -76,28 +76,28 @@
   <ul class="list">
     <li>
       <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
-        <span>4</span>
+        <span class="data-id-4">4</span>
         <span class="mr-auto underline">uml 예시</span>
         <span>2023-03-07</span>
       </a>
     </li>
     <li>
       <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
-        <span>3</span>
+        <span class="data-id-3">3</span>
         <span class="mr-auto underline">HTML 기초</span>
         <span>2023-03-07</span>
       </a>
     </li>
     <li>
       <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
-        <span>2</span>
+        <span class="data-id-2">2</span>
         <span class="mr-auto underline">CSS 기초</span>
         <span>2023-03-07</span>
       </a>
     </li>
     <li>
       <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
-        <span>1</span>
+        <span class="data-id-1">1</span>
         <span class="mr-auto underline">JAVA 기초</span>
         <span>2023-03-07</span>
       </a>
@@ -114,6 +114,7 @@
           let html = katex.renderToString(node.literal, {
             throwOnError: false
           });
+
           return [{
             type: "openTag",
             tagName: "div",
@@ -179,7 +180,14 @@
         })
     }
 
-    $('.list > li:first-child > a').click();
+    const params = new URL(document.location).searchParams;
+    const paramId = params.get("id");
+
+    if ($('.data-id-' + paramId).length == 1) {
+      $('.data-id-' + paramId).parent().click();
+    } else {
+      $('.list > li:first-child > a').click();
+    }
   </script>
 
 </body>
