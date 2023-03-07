@@ -58,6 +58,7 @@
   <div id="viewer-1"></div>
 
   <ul>
+    <li><a href="javascript:showPage(4);">4번글</a></li>
     <li><a href="javascript:showPage(3);">3번글</a></li>
     <li><a href="javascript:showPage(2);">2번글</a></li>
     <li><a href="javascript:showPage(1);">1번글</a></li>
@@ -103,7 +104,7 @@
     });
 
     function showPage(pageNo) {
-      fetch(pageNo + ".md")
+      fetch(pageNo + ".md") //.md 파일 불러오기 
         .then(response => response.text()) // 응답에서 본문만 취한다.
         .then(text => {
           viewer1.setMarkdown(text);
@@ -114,6 +115,8 @@
           });
         })
     }
+
+    showPage(4);
 
   </script>
 
